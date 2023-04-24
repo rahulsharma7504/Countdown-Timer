@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      position: relative;
+      display: inline-block;
+      border-spacing: 5px;
+      width: 5vw;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+
+    }
+
+    div {
+      display: inline-block;
+      width: 5vw;
+      height: 3vw;
+      border: 2px solid blue;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="number" required id="hour">
+  <input type="number" required id="minute">
+  <input type="number" required id="second">
+  <button type="button" id="set">Set Time</button><br><br>
+  <div id="hou"></div>
+  <div id="min"></div>
+  <div id="sec"></div>
+
+
+
+
+
+
+
+  <script>
+    try {
+      document.getElementById('set').addEventListener('click', set);
+      function set() {
+        let h1 = document.getElementById('hour').value;
+        let m1 = document.getElementById('minute').value;
+        let s1 = document.getElementById('second').value;
+        if(h1>60){
+          alert('value should be les then or equal to 60');
+        }else{
+        var int1=setInterval(() => {
+         document.getElementById('hou').innerHTML = h1 -= 1;
+         if(h1==0){
+          clearInterval(int1);
+        }
+        }, 1000);
+        
+      }
+      if(m1>60){
+        alert('value should be les then or equal to 60');
+
+      }else if(s1==0){
+        m1-=1
+      }
+      
+      
+      else{
+        let int2=setInterval(() => {
+          document.getElementById('min').innerHTML = m1 -= 1;
+          if(m1==0){
+          clearInterval(int2)
+        }
+        }, 5000);
+        
+      }
+
+        if(s1>60){
+          alert('value should be les then or equal to 60');
+
+        }else{
+        let int3=setInterval(() => {
+          document.getElementById('sec').innerHTML = s1 -= 1;
+          if(s1==0){
+          s1=60;
+        }
+
+        }, 1000);
+       
+      }
+
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+
+// let v=6;
+// let mt=setInterval(() => {
+//   console.log(v-=1);
+//   if(v==0){
+//    v=5;
+//   }
+// }, 700);
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
